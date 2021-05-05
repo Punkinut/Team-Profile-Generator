@@ -187,7 +187,7 @@ const init = () => {
         }
     ])
     .then((managerRes) => {
-        console.log("Create new class that was imported for manager")
+        console.log("---NEW CLASS---IMPORT")
         console.log(managerRes)
         // Gets the response on what team members they want
         const memberChoice = managerRes.teamMembers;
