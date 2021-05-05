@@ -1,7 +1,6 @@
 // Getting third party packages
 const inquirer = require('inquirer');
 const fs = require ('fs');
-const { async } = require('rxjs');
 
 const engineer = () => {
     inquirer
@@ -9,17 +8,35 @@ const engineer = () => {
         {
             type: "input",
             message: "What is your engineer's name?",
-            name: "engineerName"
+            name: "engineerName",
+            validate: async (input) => {
+                if(input.trim(' ') === '') {
+                    return 'Please put in an answer'
+                }
+                return true;
+            }
         },
         {
             type: "input",
             message: "What is your engineer's id?",
-            name: "engineerId"
+            name: "engineerId",
+            validate: async (input) => {
+                if(input.trim(' ') === '') {
+                    return 'Please put in an answer'
+                }
+                return true;
+            }
         },
         {
             type: "input",
             message: "What is your engineers's GitHub uersname?",
-            name: "engineerUsername"
+            name: "engineerUsername",
+            validate: async (input) => {
+                if(input.trim(' ') === '') {
+                    return 'Please put in an answer'
+                }
+                return true;
+            }
         },
         {
             type: "list",
@@ -29,7 +46,7 @@ const engineer = () => {
         }
     ])
     .then((engineerRes) => {
-        console.log("Create new class that was imported for engineer")
+        console.log("---NEW CLASS---IMPORT")
         console.log(engineerRes)
         // Gets the response on what team members they want
         const engineerChoice = engineerRes.teamMembers;
@@ -50,22 +67,46 @@ const intern = () => {
         {
             type: "input",
             message: "What is your intern's name?",
-            name: "internName"
+            name: "internName",
+            validate: async (input) => {
+                if(input.trim(' ') === '') {
+                    return 'Please put in an answer'
+                }
+                return true;
+            }
         },
         {
             type: "input",
             message: "What is your intern's id?",
-            name: "internId"
+            name: "internId",
+            validate: async (input) => {
+                if(input.trim(' ') === '') {
+                    return 'Please put in an answer'
+                }
+                return true;
+            }
         },
         {
             type: "input",
             message: "What is your intern's email?",
-            name: "internEmail"
+            name: "internEmail",
+            validate: async (input) => {
+                if(input.trim(' ') === '') {
+                    return 'Please put in an answer'
+                }
+                return true;
+            }
         },
         {
             type: "input",
             message: "What is your intern's school?",
-            name: "internSchool"
+            name: "internSchool",
+            validate: async (input) => {
+                if(input.trim(' ') === '') {
+                    return 'Please put in an answer'
+                }
+                return true;
+            }
         },
         {
             type: "list",
@@ -75,7 +116,7 @@ const intern = () => {
         }
     ])
     .then((internRes) => {
-        console.log("Create new class that was imported for intern")
+        console.log("---NEW CLASS---IMPORT")
         console.log(internRes)
         // Gets the response on what team members they want
         const internChoice = internRes.teamMembers;
@@ -108,17 +149,35 @@ const init = () => {
         {
             type: "input",
             message: "What is the team manager's id?",
-            name: "managerId"
+            name: "managerId",
+            validate: async (input) => {
+                if(input.trim(' ') === '') {
+                    return 'Please put in an answer'
+                }
+                return true;
+            }
         },
         {
             type: "input",
             message: "What is the team manager's email?",
-            name: "managerEmail"
+            name: "managerEmail",
+            validate: async (input) => {
+                if(input.trim(' ') === '') {
+                    return 'Please put in an answer'
+                }
+                return true;
+            }
         },
         {
             type: "input",
             message: "What is the team manager's office number?",
-            name: "managerPhone"
+            name: "managerPhone",
+            validate: async (input) => {
+                if(input.trim(' ') === '') {
+                    return 'Please put in an answer'
+                }
+                return true;
+            }
         },
         {
             type: "list",
