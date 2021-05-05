@@ -1,6 +1,7 @@
 // Getting third party packages
 const inquirer = require('inquirer');
 const fs = require ('fs');
+const { async } = require('rxjs');
 
 const engineer = () => {
     inquirer
@@ -96,7 +97,13 @@ const init = () => {
         {
             type: "input",
             message: "What is the team manager's name?",
-            name: "managerName"
+            name: "managerName",
+            validate: async (input) => {
+                if(input.trim(' ') === '') {
+                    return 'Please put in an answer'
+                }
+                return true;
+            }
         },
         {
             type: "input",
