@@ -2,7 +2,8 @@
 const inquirer = require('inquirer');
 const fs = require ('fs');
 
-inquirer
+const init = () => {
+    inquirer
     .prompt([
         {
             type: "input",
@@ -32,6 +33,19 @@ inquirer
         }
     ])
     .then((response) => {
-        console.log(response)
-        
+        // console.log(response)
+        // Gets the response on what team members they want
+        const memberChoice = response.teamMembers;
+        // List of conditions depending on what type of team member they want.
+        if(memberChoice !== "Engineer" && memberChoice !== "Intern") {
+            console.log("They do not want anymore team members!")
+        } else if (memberChoice === "Engineer") {
+            console.log("They want an engineer! - run function") 
+        } else {
+            console.log("They want an intern! - run function")
+        }
     })
+};
+
+// Starts series of questions
+init();
