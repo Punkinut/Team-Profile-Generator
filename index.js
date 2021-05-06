@@ -1,7 +1,8 @@
 // Getting third party packages
 const inquirer = require('inquirer');
-const Manager = require('./lib/manager')
-const Intern = require('./lib/intern')
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
 
 let team = [];
 
@@ -32,6 +33,17 @@ const engineer = () => {
         },
         {
             type: "input",
+            message: "What is your engineer's email?",
+            name: "engineerEmail",
+            validate: async (input) => {
+                if(input.trim(' ') === '') {
+                    return 'Please put in an answer'
+                }
+                return true;
+            }
+        },
+        {
+            type: "input",
             message: "What is your engineers's GitHub uersname?",
             name: "engineerUsername",
             validate: async (input) => {
@@ -49,9 +61,10 @@ const engineer = () => {
         }
     ])
     .then((engineerRes) => {
-        // Gets the response on what team members they want
         const engineerChoice = engineerRes.teamMembers;
-        // List of conditions depending on what type of team member they want
+        const { engineerName, engineerId, engineerEmail, engineerUsername} = engineerRes;
+        let engineer = new Engineer (engineerName, engineerId, engineerEmail, engineerUsername);
+        team.push(engineer);
         if (engineerChoice === "Engineer") {
             engineer();
         } else if (engineerChoice === "Intern"){
