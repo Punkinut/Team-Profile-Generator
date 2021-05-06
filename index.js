@@ -1,6 +1,7 @@
 // Getting third party packages
 const inquirer = require('inquirer');
 const fs = require ('fs');
+const Manager = require('./lib/manager');
 
 const engineer = () => {
     inquirer
@@ -52,7 +53,7 @@ const engineer = () => {
         const engineerChoice = engineerRes.teamMembers;
         // List of conditions depending on what type of team member they want
         if(engineerChoice !== "Engineer" && engineerChoice !== "Intern") {
-            console.log("They do not want anymore team members!")
+            console.log("Added all team members!")
         } else if (engineerChoice === "Engineer") {
             engineer();
         } else {
@@ -122,7 +123,7 @@ const intern = () => {
         const internChoice = internRes.teamMembers;
         // List of conditions depending on what type of team member they want
         if(internChoice !== "Engineer" && internChoice !== "Intern") {
-            console.log("They do not want anymore team members!")
+            console.log("Added all team members!")
         } else if (internChoice === "Engineer") {
             engineer();
         } else {
@@ -187,13 +188,14 @@ const init = () => {
         }
     ])
     .then((managerRes) => {
-        console.log("---NEW CLASS---IMPORT")
-        console.log(managerRes)
+        const { managerName, managerId, managerEmail, managerPhone } = managerRes;
+        const manageUpdate = new Manager(managerName, managerId, managerEmail, managerPhone);
+        console.log(manageUpdate.getName(), manageUpdate.getId(), manageUpdate.getEmail(), manageUpdate.getOfficeNumber(), manageUpdate.getRole());
         // Gets the response on what team members they want
         const memberChoice = managerRes.teamMembers;
         // List of conditions depending on what type of team member they want.
         if(memberChoice !== "Engineer" && memberChoice !== "Intern") {
-            console.log("They do not want anymore team members!")
+            console.log("Added all team members!")
         } else if (memberChoice === "Engineer") {
             engineer();
         } else {
