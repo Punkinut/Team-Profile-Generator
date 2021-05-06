@@ -70,7 +70,7 @@ const engineer = () => {
         } else if (engineerChoice === "Intern"){
             intern();
         } else {
-            console.log(team)
+            render(team);
         }
     })
 };
@@ -139,7 +139,7 @@ const intern = () => {
         } else if (internChoice === "Intern"){
             intern();
         } else {
-            console.log(team)
+            render(team);
         }
     })
 };
@@ -209,10 +209,19 @@ const init = () => {
         } else if (memberChoice === "Intern"){
             intern();
         } else {
-            console.log(team)
+            render(team);
         }
     })
 };
 
 // Starts series of questions
 init();
+
+const render = (team) => {
+    let managerFromTeam = team.filter(employee => employee.getRole() === 'Manager');
+    let engineerFromTeam = team.filter(employee => employee.getRole() === 'Engineer');
+    let internFromTeam = team.filter(employee => employee.getRole() === 'Intern');
+
+    console.log(managerFromTeam)
+
+}
