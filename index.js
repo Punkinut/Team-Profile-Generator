@@ -1,7 +1,9 @@
 // Getting third party packages
 const inquirer = require('inquirer');
-const fs = require ('fs');
-const Manager = require('./lib/manager');
+const Manager = require('./lib/manager')
+const Intern = require('./lib/intern')
+
+let team = [];
 
 const engineer = () => {
     inquirer
@@ -54,6 +56,8 @@ const engineer = () => {
             engineer();
         } else if (engineerChoice === "Intern"){
             intern();
+        } else {
+            console.log(team)
         }
     })
 };
@@ -113,13 +117,16 @@ const intern = () => {
         }
     ])
     .then((internRes) => {
-        // Gets the response on what team members they want
         const internChoice = internRes.teamMembers;
-        // List of conditions depending on what type of team member they want
+        const { internName, internId, internEmail, internSchool } = internRes;
+        let intern = new Intern (internName, internId, internEmail, internSchool);
+        team.push(intern);
         if (internChoice === "Engineer") {
             engineer();
         } else if (internChoice === "Intern"){
             intern();
+        } else {
+            console.log(team)
         }
     })
 };
@@ -180,16 +187,16 @@ const init = () => {
         }
     ])
     .then((managerRes) => {
-        // Object destruction to get each element
-        const { managerName, managerId, managerEmail, managerPhone } = managerRes;
-        
-        // Gets the response on what team members they want
         const memberChoice = managerRes.teamMembers;
-        // List of conditions depending on what type of team member they want.
+        const { managerName, managerId, managerEmail, managerPhone } = managerRes;
+        let manager = new Manager(managerName, managerId, managerEmail, managerPhone);
+        team.push(manager);
         if (memberChoice === "Engineer") {
             engineer();
         } else if (memberChoice === "Intern"){
             intern();
+        } else {
+            console.log(team)
         }
     })
 };
