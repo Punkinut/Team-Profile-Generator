@@ -47,16 +47,12 @@ const engineer = () => {
         }
     ])
     .then((engineerRes) => {
-        console.log("---NEW CLASS---IMPORT")
-        console.log(engineerRes)
         // Gets the response on what team members they want
         const engineerChoice = engineerRes.teamMembers;
         // List of conditions depending on what type of team member they want
-        if(engineerChoice !== "Engineer" && engineerChoice !== "Intern") {
-            console.log("Added all team members!")
-        } else if (engineerChoice === "Engineer") {
+        if (engineerChoice === "Engineer") {
             engineer();
-        } else {
+        } else if (engineerChoice === "Intern"){
             intern();
         }
     })
@@ -117,16 +113,12 @@ const intern = () => {
         }
     ])
     .then((internRes) => {
-        console.log("---NEW CLASS---IMPORT")
-        console.log(internRes)
         // Gets the response on what team members they want
         const internChoice = internRes.teamMembers;
         // List of conditions depending on what type of team member they want
-        if(internChoice !== "Engineer" && internChoice !== "Intern") {
-            console.log("Added all team members!")
-        } else if (internChoice === "Engineer") {
+        if (internChoice === "Engineer") {
             engineer();
-        } else {
+        } else if (internChoice === "Intern"){
             intern();
         }
     })
@@ -188,17 +180,15 @@ const init = () => {
         }
     ])
     .then((managerRes) => {
+        // Object destruction to get each element
         const { managerName, managerId, managerEmail, managerPhone } = managerRes;
-        const manageUpdate = new Manager(managerName, managerId, managerEmail, managerPhone);
-        console.log(manageUpdate.getName(), manageUpdate.getId(), manageUpdate.getEmail(), manageUpdate.getOfficeNumber(), manageUpdate.getRole());
+        
         // Gets the response on what team members they want
         const memberChoice = managerRes.teamMembers;
         // List of conditions depending on what type of team member they want.
-        if(memberChoice !== "Engineer" && memberChoice !== "Intern") {
-            console.log("Added all team members!")
-        } else if (memberChoice === "Engineer") {
+        if (memberChoice === "Engineer") {
             engineer();
-        } else {
+        } else if (memberChoice === "Intern"){
             intern();
         }
     })
