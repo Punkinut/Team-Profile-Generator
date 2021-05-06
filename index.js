@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
+const genusers = require('./src/genusers')
 
 let team = [];
 
@@ -222,6 +223,16 @@ const render = (team) => {
     let engineerFromTeam = team.filter(employee => employee.getRole() === 'Engineer');
     let internFromTeam = team.filter(employee => employee.getRole() === 'Intern');
 
-    console.log(managerFromTeam)
+    console.log(managerFromTeam, engineerFromTeam, internFromTeam)
+    if (managerFromTeam.join('') !== '') {
+        console.log(genusers.generateManager(managerFromTeam)) 
+    }
 
+    if (engineerFromTeam.join('') !== '') {
+        console.log(genusers.generateEngineer(engineerFromTeam))
+    }
+
+    if (internFromTeam.join('') !== '') {
+        console.log(genusers.generateIntern(internFromTeam))
+    }
 }
