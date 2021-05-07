@@ -3,7 +3,8 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
-const genusers = require('./src/genusers')
+const genusers = require('./src/genusers');
+const createHtml = require('./src/template');
 
 let team = [];
 
@@ -246,5 +247,5 @@ const render = (team) => {
 }
 
 const generateHtml = inp => {
-    console.log(inp)
+    createHtml(inp);
 }
