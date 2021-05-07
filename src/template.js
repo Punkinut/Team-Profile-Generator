@@ -222,7 +222,16 @@ pre, code {
 ol, ul {
   list-style: none;
 }`
-    fs.writeFile(__dirname + './dist/style.css', style, (err) => {
+
+    fs.writeFile('dist/index.html', overallFile, (err) => {
+        err ? console.log(err) : console.log('CSS File Created!')
+    });
+
+    fs.writeFile('dist/style.css', style, (err) => {
+        err ? console.log(err) : console.log('CSS File Created!')
+    });
+
+    fs.writeFile('dist/reset.css', reset, (err) => {
         err ? console.log(err) : console.log('CSS File Created!')
     });
 
