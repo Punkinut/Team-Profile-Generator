@@ -223,7 +223,7 @@ const render = (team) => {
     let engineerFromTeam = team.filter(employee => employee.getRole() === 'Engineer');
     let internFromTeam = team.filter(employee => employee.getRole() === 'Intern');
 
-    console.log(managerFromTeam, engineerFromTeam, internFromTeam)
+    
     if (managerFromTeam.join('') !== '') {
         console.log(genusers.generateManager(managerFromTeam)) 
     }
