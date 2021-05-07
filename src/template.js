@@ -224,15 +224,15 @@ ol, ul {
 }`
 
     fs.writeFile('dist/index.html', overallFile, (err) => {
-        err ? console.log(err) : console.log('CSS File Created!')
+        err ? console.log(err) : console.log('HTML File Created!')
     });
 
     fs.writeFile('dist/style.css', style, (err) => {
-        err ? console.log(err) : console.log('CSS File Created!')
+        err ? console.log(err) : console.log('STYLE CSS File Created!')
     });
 
     fs.writeFile('dist/reset.css', reset, (err) => {
-        err ? console.log(err) : console.log('CSS File Created!')
+        err ? console.log(err) : console.log('RESET CSS File Created!')
     });
 
 }
