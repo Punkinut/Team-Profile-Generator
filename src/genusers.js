@@ -1,6 +1,7 @@
 const generateManager = manager => {
     return `
     <section class="card f600">
+    <p class="id f400">${manager[0].id}</p>
         <i class="fas fa-user icon"></i>
         <p>${manager[0].name}</p>
         <p class="f400 type">Manager</p>
@@ -12,6 +13,7 @@ const generateManager = manager => {
 const generateEngineer = engineer => {
     return `
     <section class="card f600">
+        <p class="id f400">${engineer.id}</p>
         <i class="fas fa-glass-whiskey icon"></i>
         <p>${engineer.name}</p>
         <p class="f400 type">Engineer</p>
@@ -23,6 +25,7 @@ const generateEngineer = engineer => {
 const generateIntern = intern => {
     return `
     <section class="card f600">
+    <p class="id f400">${intern.id}</p>
         <i class="fas fa-graduation-cap icon"></i>
         <p>${intern.name}</p>
         <p class="f400 type">Intern</p>
