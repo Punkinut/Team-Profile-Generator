@@ -1,6 +1,6 @@
 const Employee = require('../lib/employee');
 
-describe("Class Test Sequence", () => {
+describe("Employee Test Sequence", () => {
     it('Can set name via constructor arguements', () => {
         let name = 'Josh';
 
@@ -19,10 +19,26 @@ describe("Class Test Sequence", () => {
         let employ = new Employee(' ', ' ', email);
         expect(employ.email).toEqual('example@gmail.com');
     })
-    // it('Can get name via getName()', () => {
-    //     let name = 'Smith';
+    it('Can get name via getName()', () => {
+        let name = 'Smith';
 
-    //     let employ = new Employee(name);
-    //     expect(employ.name).toEqual('example@gmail.com');
-    // })
+        let employ = new Employee(name);
+        expect(employ.getName()).toEqual('Smith');
+    })
+    it('Can get id via getId()', () => {
+        let id = '3';
+
+        let employ = new Employee(' ', id);
+        expect(employ.getId()).toEqual('3');
+    })
+    it('Can get email via getEmail()', () => {
+        let email = 'example@gmail.com';
+
+        let employ = new Employee(' ', ' ', email);
+        expect(employ.getEmail()).toEqual('example@gmail.com');
+    })
+    it('getRole() should return "Employee"', () => {
+        let employ = new Employee();
+        expect(employ.getRole()).toEqual('Employee');
+    })
 })
