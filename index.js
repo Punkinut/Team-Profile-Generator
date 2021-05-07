@@ -71,7 +71,7 @@ const engineer = () => {
         } else if (engineerChoice === "Intern"){
             intern();
         } else {
-            render(team);
+            generateHtml(render(team));
         }
     })
 };
@@ -140,7 +140,7 @@ const intern = () => {
         } else if (internChoice === "Intern"){
             intern();
         } else {
-            render(team);
+            generateHtml(render(team));
         }
     })
 };
@@ -210,7 +210,7 @@ const init = () => {
         } else if (memberChoice === "Intern"){
             intern();
         } else {
-            render(team);
+            generateHtml(render(team));
         }
     })
 };
@@ -223,21 +223,28 @@ const render = (team) => {
     let engineerFromTeam = team.filter(employee => employee.getRole() === 'Engineer');
     let internFromTeam = team.filter(employee => employee.getRole() === 'Intern');
 
+    let combineHtml = '';
     
     if (managerFromTeam.join('') !== '') {
-        console.log(genusers.generateManager(managerFromTeam)) 
+        combineHtml = combineHtml + genusers.generateManager(managerFromTeam)
     }
 
     engineerFromTeam.forEach(elementEng => {
         if (engineerFromTeam.join('') !== '') {
-            console.log(genusers.generateEngineer(elementEng))
+            combineHtml = combineHtml + genusers.generateEngineer(elementEng)
         }
     });
     
     internFromTeam.forEach(elementInt => {
         if (internFromTeam.join('') !== '') {
-            console.log(genusers.generateIntern(elementInt))
+            combineHtml = combineHtml + genusers.generateIntern(elementInt)
         }
     })
+
+    return combineHtml;
     
+}
+
+const generateHtml = inp => {
+    console.log(inp)
 }
