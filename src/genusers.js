@@ -11,7 +11,13 @@ const generateManager = manager => {
 
 const generateEngineer = engineer => {
     return `
-    <p>Engineer</p>`
+    <section class="card f600">
+        <i class="fas fa-glass-whiskey icon"></i>
+        <p>${engineer.name}</p>
+        <p class="f400 type">Engineer</p>
+        <p class="f400 type-elements">example@gmail.com</p>
+        <p class="f400 type-elements">GitHub</p>
+    </section>`
 }
 
 const generateIntern = intern => {

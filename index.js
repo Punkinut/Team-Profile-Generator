@@ -64,8 +64,8 @@ const engineer = () => {
     .then((engineerRes) => {
         const engineerChoice = engineerRes.teamMembers;
         const { engineerName, engineerId, engineerEmail, engineerUsername} = engineerRes;
-        let engineer = new Engineer (engineerName, engineerId, engineerEmail, engineerUsername);
-        team.push(engineer);
+        let engineerP = new Engineer (engineerName, engineerId, engineerEmail, engineerUsername);
+        team.push(engineerP);
         if (engineerChoice === "Engineer") {
             engineer();
         } else if (engineerChoice === "Intern"){
@@ -133,8 +133,8 @@ const intern = () => {
     .then((internRes) => {
         const internChoice = internRes.teamMembers;
         const { internName, internId, internEmail, internSchool } = internRes;
-        let intern = new Intern (internName, internId, internEmail, internSchool);
-        team.push(intern);
+        let internP = new Intern (internName, internId, internEmail, internSchool);
+        team.push(internP);
         if (internChoice === "Engineer") {
             engineer();
         } else if (internChoice === "Intern"){
@@ -228,11 +228,16 @@ const render = (team) => {
         console.log(genusers.generateManager(managerFromTeam)) 
     }
 
-    if (engineerFromTeam.join('') !== '') {
-        console.log(genusers.generateEngineer(engineerFromTeam))
-    }
-
-    if (internFromTeam.join('') !== '') {
-        console.log(genusers.generateIntern(internFromTeam))
-    }
+    engineerFromTeam.forEach(elementEng => {
+        if (engineerFromTeam.join('') !== '') {
+            console.log(genusers.generateEngineer(elementEng))
+        }
+    });
+    
+    internFromTeam.forEach(elementInt => {
+        if (internFromTeam.join('') !== '') {
+            console.log(genusers.generateIntern(elementInt))
+        }
+    })
+    
 }
