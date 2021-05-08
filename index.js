@@ -6,9 +6,11 @@ const Intern = require('./lib/intern');
 const genusers = require('./src/genusers');
 const createHtml = require('./src/template');
 
+// Arrays that collects team memebers and id lists
 let team = [];
 let idList = [];
 
+// Function that runs the prompts related to the engineer
 const engineer = (ids) => {
     inquirer
     .prompt([
@@ -79,6 +81,7 @@ const engineer = (ids) => {
     })
 };
 
+// Function that runs the prompts related to the intern
 const intern = (ids) => {
     inquirer
     .prompt([
@@ -149,7 +152,7 @@ const intern = (ids) => {
     })
 };
 
-
+// Function that runs the prompts related to the manager
 const init = () => {
     inquirer
     .prompt([
@@ -223,6 +226,7 @@ const init = () => {
 // Starts series of questions
 init();
 
+// Render function that takes all the team members and filters them into one large variable of html
 const render = (team) => {
     let managerFromTeam = team.filter(employee => employee.getRole() === 'Manager');
     let engineerFromTeam = team.filter(employee => employee.getRole() === 'Engineer');
@@ -250,6 +254,7 @@ const render = (team) => {
     
 }
 
+// This passes all the gathered html into a template the creates the final file
 const generateHtml = inp => {
     createHtml(inp);
 }
