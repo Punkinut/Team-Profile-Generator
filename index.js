@@ -11,7 +11,7 @@ let team = [];
 let idList = [];
 
 // Function that runs the prompts related to the engineer
-const engineer = (ids) => {
+const engineer = () => {
     inquirer
     .prompt([
         {
@@ -32,6 +32,9 @@ const engineer = (ids) => {
             validate: async (input) => {
                 if(input.trim(' ') === '') {
                     return 'Please put in an answer'
+                }
+                if(idList.indexOf(input) > -1) {
+                    return 'ID already exists'
                 }
                 return true;
             }
@@ -72,9 +75,9 @@ const engineer = (ids) => {
         team.push(engineerP);
         idList.push(engineerId);
         if (engineerChoice === "Engineer") {
-            engineer(idList);
+            engineer();
         } else if (engineerChoice === "Intern"){
-            intern(idList);
+            intern();
         } else {
             generateHtml(render(team));
         }
@@ -82,7 +85,7 @@ const engineer = (ids) => {
 };
 
 // Function that runs the prompts related to the intern
-const intern = (ids) => {
+const intern = () => {
     inquirer
     .prompt([
         {
@@ -103,6 +106,9 @@ const intern = (ids) => {
             validate: async (input) => {
                 if(input.trim(' ') === '') {
                     return 'Please put in an answer'
+                }
+                if(idList.indexOf(input) > -1) {
+                    return 'ID already exists'
                 }
                 return true;
             }
@@ -143,9 +149,9 @@ const intern = (ids) => {
         team.push(internP);
         idList.push(internId);
         if (internChoice === "Engineer") {
-            engineer(idList);
+            engineer();
         } else if (internChoice === "Intern"){
-            intern(idList);
+            intern();
         } else {
             generateHtml(render(team));
         }
@@ -214,9 +220,9 @@ const init = () => {
         team.push(manager);
         idList.push(managerId);
         if (memberChoice === "Engineer") {
-            engineer(idList);
+            engineer();
         } else if (memberChoice === "Intern"){
-            intern(idList);
+            intern();
         } else {
             generateHtml(render(team));
         }
