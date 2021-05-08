@@ -7,8 +7,9 @@ const genusers = require('./src/genusers');
 const createHtml = require('./src/template');
 
 let team = [];
+let idList = [];
 
-const engineer = () => {
+const engineer = (ids) => {
     inquirer
     .prompt([
         {
@@ -67,17 +68,18 @@ const engineer = () => {
         const { engineerName, engineerId, engineerEmail, engineerUsername} = engineerRes;
         let engineerP = new Engineer (engineerName, engineerId, engineerEmail, engineerUsername);
         team.push(engineerP);
+        idList.push(engineerId);
         if (engineerChoice === "Engineer") {
-            engineer();
+            engineer(idList);
         } else if (engineerChoice === "Intern"){
-            intern();
+            intern(idList);
         } else {
             generateHtml(render(team));
         }
     })
 };
 
-const intern = () => {
+const intern = (ids) => {
     inquirer
     .prompt([
         {
@@ -136,10 +138,11 @@ const intern = () => {
         const { internName, internId, internEmail, internSchool } = internRes;
         let internP = new Intern (internName, internId, internEmail, internSchool);
         team.push(internP);
+        idList.push(internId);
         if (internChoice === "Engineer") {
-            engineer();
+            engineer(idList);
         } else if (internChoice === "Intern"){
-            intern();
+            intern(idList);
         } else {
             generateHtml(render(team));
         }
@@ -206,10 +209,11 @@ const init = () => {
         const { managerName, managerId, managerEmail, managerPhone } = managerRes;
         let manager = new Manager(managerName, managerId, managerEmail, managerPhone);
         team.push(manager);
+        idList.push(managerId);
         if (memberChoice === "Engineer") {
-            engineer();
+            engineer(idList);
         } else if (memberChoice === "Intern"){
-            intern();
+            intern(idList);
         } else {
             generateHtml(render(team));
         }
